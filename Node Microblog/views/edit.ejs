@@ -1,0 +1,46 @@
+<!-- EDIT PAGE OF ARTICLE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Edit Page</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" type="text/css" href="/edit.css">
+</head>
+<body>
+    <!-- blogpage details -->
+    <header>
+        <h6>ARTICLE EDIT PAGE</h6>
+        <h1><a href="homepage"><%= set[0].blog_name %></a></h1>
+        <h3><%= set[0].blog_author %></h3>
+    </header>
+
+    <!-- edit article section -->
+    <div>
+        <form action="edited" method="post">
+            <!-- edit article title section -->
+            <label for="article_title">Article Title:</label>
+            <br>
+            <input type="text" id="article_title" name="article_title" value="<%=article[0].blog_title%>" required>
+            <br>
+
+            <!-- edit blog content section -->
+            <label for="article_content">Article Text:</label>
+            <br>
+            <textarea id="article_content" name="article_content" value="<%=article[0].blog_content%>" ><%=article[0].blog_content%></textarea>
+            <br>
+            <p>DATE CREATED: <%=article[0].blog_created%> | LAST MODIFIED: <%=article[0].blog_modified%></p>
+
+            <!-- save button -->
+            <button id="save" type="submit" name="id" value="<%=article[0].id%>">SAVE CHANGES</button>
+        </form>
+    </div>
+    
+    <!-- back button (link) -->
+    <a href="homepage" id="go-back">← BACK to AUTHOR'S HOMEPAGE</a>
+
+</body>
+</html>

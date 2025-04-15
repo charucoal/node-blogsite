@@ -1,0 +1,42 @@
+<!-- BLOG SETTINGS PAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" type="text/css" href="/settings.css">
+</head>
+<body>
+
+     <!-- blogpage details -->
+    <header>
+        <h6>BLOG SETTINGS PAGE</h6>
+        <h1><a href="../author/homepage"><%= set[0].blog_name %></a></h1>
+        <h3><%= set[0].blog_author %></h3>
+    </header>
+
+    <!-- settings section -->
+    <main>
+        <form action="settings_update" method="post">
+            <!-- blog name settings -->
+            <label for="blog-title">Blog Title:</label>
+            <br>
+            <input type="text" id="blog-title" name="blog_title" value="<%= set[0].blog_name %>" required>
+            <br>
+            <!-- blog author settings -->
+            <label for="blog-author">Author Name:</label>
+            <br>
+            <input type="text" id="blog-author" name="blog_author" value = "<%= set[0].blog_author %>" required>
+            <br>
+            <!-- SAVE button -->
+            <button id="save" type="submit">SAVE CHANGES</button>
+        </form>
+        <!-- back button (link) -->
+        <a href="../author/homepage" id="go-back">← BACK to AUTHOR'S HOMEPAGE</a>
+    </main>
+</body>
+</html>

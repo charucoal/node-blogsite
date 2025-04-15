@@ -1,0 +1,87 @@
+<!-- READER HOMEPAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader Homepage</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" type="text/css" href="/reader_homepage.css">
+</head>
+<body>
+
+    <!-- blogpage details -->
+    <header>
+        <h6>READER'S HOMEPAGE</h6>
+        <h1><a href="homepage"><%= set[0].blog_name %></a></h1>
+        <h3><%= set[0].blog_author %></h3>
+    </header>
+
+    <h2>• PUBLISHED ARTICLES •</h2>
+
+    <form action="../article/article_clicked" method="post">
+        <!-- creates a table where blog posts are displayed in rows of 3 -->
+        <table>
+            <!-- iterates through all the published blgos -->
+            <!-- blogs are put from newest at the top -->
+            <% for (let i = 0; i < blog_published.length; i+=3) {
+                // logic to alternate between background colours for blogposts (white and black)
+                if (i%2 == 0)
+                {
+                    var a = "even";
+                    var b = "odd";
+                }
+                
+                else
+                {
+                    var a = "odd"
+                    var b = "even"
+                }%>
+                <!-- a row of three articles are rendered with each iteration of a loop -->
+                <tr>
+                    <!-- FIRST ARTICLE IN THE ROW -->
+                    <% if (blog_published[i]) { %>
+                    <td class="<%= a %>">
+                        <!-- title -->
+                        <%= blog_published[i].blog_title %>
+                        <br>
+                        <!-- date published -->
+                        on <%= blog_published[i].blog_published %>
+                        <br>
+                        <!-- on hover shows the first 90 characters of the article (a preview) -->
+                        <button name="id" value="<%= blog_published[i].id %>">CLICK HERE TO READ</button>
+                        <p class="hidden-text-<%= a %>"><%= blog_published[i].blog_content.slice(0,90) %>...</p>
+                    </td>
+                    <% } %>
+
+                    <!-- SECOND ARTICLE IN THE ROW -->
+                    <% if (blog_published[i+1]) { %>
+                    <td class="<%= b %>">
+                        <%= blog_published[i+1].blog_title %>
+                        <br>
+                        on <%= blog_published[i+1].blog_published %>
+                        <br>
+                        <button name="id" value="<%= blog_published[i+1].id %>">CLICK HERE TO READ</button>
+                        <p class="hidden-text-<%= b %>"><%= blog_published[i+1].blog_content.slice(0,90) %>...</p>
+                    </td>
+                    <% } %>
+
+                    <!-- THIRD ARTICLE IN THE ROW -->
+                    <% if (blog_published[i+2]) { %>
+                    <td class="<%= a %>"> 
+                        <%= blog_published[i+2].blog_title %>
+                        <br>
+                        on <%= blog_published[i+2].blog_published %>
+                        <br>
+                        <button name="id" value="<%= blog_published[i+2].id %>">CLICK HERE TO READ.</button>
+                        <p class="hidden-text-<%= a %>"><%= blog_published[i+2].blog_content.slice(0,90) %>...</p>
+                    </td>
+                    <% } %>
+                </tr>
+            <% } %>
+        </table>
+    </form>
+</body>
+</html>

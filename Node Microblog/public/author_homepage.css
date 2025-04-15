@@ -1,0 +1,153 @@
+/* AUTHOR HOMEPAGE CSS */
+
+/* WEBSITE'S MAIN FONT (regular version) */
+@font-face {
+    font-family: Didot-Regular;
+    src: url(fonts/Didot-Regular.ttf);
+}
+  
+/* WEBSITE'S MAIN FONT (bolded version) */
+@font-face {
+    font-family: Didot-Bold;
+    src: url(fonts/Didot-Bold.ttf);
+}
+
+body {
+    background-color: #f0efeb;
+    font-family: Didot-Bold;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+h3 {
+    position: relative;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/* draws a line to the left and right of the author's name */
+h3::before,
+h3::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background-color: #000; /* Black */
+    width: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+h3::before {
+    left: 0;
+}
+
+h3::after {
+    right: 0;
+}
+
+a {
+    color: #000; /* Black */
+    text-decoration: none;
+    background: linear-gradient(0deg, #000, #000) no-repeat right bottom / 0 var(--bg-h);
+    transition: background-size 500ms;
+    --bg-h: 1px;
+}
+
+/* underline effect is triggered on hover */
+a:where(:hover, :focus-visible) {
+    background-size: 100% var(--bg-h);
+    background-position-x: left;
+}
+
+table {
+    width: 80%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: Didot-Regular;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd; /* adds a light grey border to cells */
+}
+
+tr {
+    border-bottom: 1px solid #ddd; /* adds a light grey border to cells */
+}
+
+hr {
+    background-color: #696969;
+    border: 0;
+    height: 1px;
+    width: 95%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+button {
+    font-family: Didot-Bold;
+    width: 100%;
+    outline: none;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #f0efeb;
+    border: 2px solid #000;
+}
+
+/* indicates to the user that buttons are clickable */
+button:hover {
+    cursor: pointer;
+    background-color: #e4e4e2;
+}
+
+/* table headers (draft and publish) */
+.subheading {
+    background-color: #000; /* black background */
+    color: #f0efeb;
+    height: 50px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+    text-align: center;
+}
+
+/* red "DELETE" button */
+.delete-button {
+    color: #ff0000;
+    border-color: #ff0000;
+}
+
+/* called when the delete button is clicked */
+/* background color changes from red to maroon */
+.delete-button:active {
+    background-color: #800000;
+}
+
+/* turqioise "NEW DRAFT" button */
+#draft-button {
+    font-family: Didot-Bold;
+    width: 30%;
+    height: 40px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 2%;
+    border-radius: 10px;
+    color: #067D71;
+    border-color: #067D71;
+}
+
+/* green "PUBLISH" button */
+#publish-button {
+    color: #008000;
+    border-color: #008000;
+}

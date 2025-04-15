@@ -1,0 +1,96 @@
+/* WEBSITE'S MAIN FONT (regular version) */
+@font-face {
+    font-family: Didot-Regular;
+    src: url(fonts/Didot-Regular.ttf);
+}
+  
+/* WEBSITE'S MAIN FONT (bolded version) */
+@font-face {
+    font-family: Didot-Bold;
+    src: url(fonts/Didot-Bold.ttf);
+}
+
+body {
+    background-color: #f0efeb;
+    font-family: Didot-Bold;
+    text-align: center;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    background: linear-gradient(0deg, #000, #000) no-repeat right bottom / 0 var(--bg-h);
+    transition: background-size 500ms;
+    --bg-h: 1px;
+}
+
+/* underline effect is triggered on hover */
+a:where(:hover, :focus-visible) {
+    background-size: 100% var(--bg-h);
+    background-position-x: left;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+h3 {
+    position: relative;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/* draws a line to the left and right of the author's name */
+h3::before,
+h3::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background-color: #000;
+    width: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+h3::before {
+    left: 0;
+}
+
+h3::after {
+    right: 0;
+}
+
+button {
+    font-family: Didot-Bold;
+    width: 20%;
+    outline: none;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #f0efeb;
+    border: 2px solid #000;
+    margin-top: 1%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #e4e4e2;
+}
+
+/* input box settings */
+input {
+    width: 30%;
+    margin-top: 1%;
+    margin-bottom:1%;
+}
+
+/* green SAVE button */
+#save{
+    color: #008000;
+    border-color: #008000;
+}
+
+#go-back{
+    display:inline-flex;
+    font-size: 17px;
+    margin-top:1%;
+}

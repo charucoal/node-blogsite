@@ -1,0 +1,143 @@
+<!-- AUTHOR HOMEPAGE HTML -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author's Homepage</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" type="text/css" href="/author_homepage.css">
+</head>
+
+<body>
+    <!-- blogpage details -->
+    <header>
+        <h6><a href = "../settings/settings">BLOG SETTINGS</a> | AUTHOR'S HOMEPAGE</h6>
+        <h1><a href="homepage"><%= blog_set[0].blog_name %></a></h1>
+        <h3><%= blog_set[0].blog_author %></h3>
+    </header>
+
+    <main>
+        <!-- draft articles' table -->
+        <div id="drafts-section">
+
+            <div class="subheading">
+                <p class="subheadingText">YOUR DRAFTS</p>
+             </div>
+            <table>
+                <thead>
+                    <!-- column headings -->
+                    <tr>
+                        <th>S/N</th>
+                        <th>Article Title</th>
+                        <th>Date Created</th>
+                        <th>Date Last Modified</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- iterates through all blog posts -->
+                    <!-- displays blog posts whose status = 0 (i.e. draft) -->
+                    <!-- serial variable prints serial number -->
+                    <%  var serial = 1
+                        for (let i = 0; i < blog_post.length; i++) { 
+                        if(blog_post[i].blog_status == 0){%>
+                        <tr>
+                            <td><%= serial %></td>
+                            <td><%= blog_post[i].blog_title %></td>
+                            <td><%= blog_post[i].blog_created %></td>
+                            <td><%= blog_post[i].blog_modified %></td>
+                            <!-- call-to-action buttons for articles -->
+                            <td>
+                                <form action="editing" method="post">
+                                    <!-- EDIT BUTTON -->
+                                    <button name="edit" value="<%= blog_post[i].id %>">EDIT</button>
+                                </form>
+
+                                <form action="draft_actions" method="post">
+                                    <!-- PUBLISH BUTTON: shifts article to published table -->
+                                    <button name="publish" value="<%= blog_post[i].id %>" id="publish-button">PUBLISH</button>
+                                    <br>
+                                    <!-- DELETE button: removes the article from the database -->
+                                    <button name="delete" value="<%= blog_post[i].id %>" class="delete-button">DELETE</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <%serial++;} } %>                    
+                </tbody>
+            </table>
+            
+            <form action="editing" method="post">
+                <button name="edit" value="new" id="draft-button">CREATE A NEW DRAFT</button>
+            </form>
+        </div>
+        
+        <hr>
+        
+        <!-- published articles' table -->
+        <div id="published-section">
+
+            <div class="subheading">
+                <p class="subheadingText">PUBLISHED ARTICLES</p>
+             </div>
+
+            <table>
+                <thead>
+                    <!-- column headings -->
+                    <tr>
+                        <th>S/N</th>
+                        <th>Article Title</th>
+                        <th>Date Published</th>
+                        <th>Date Created</th>
+                        <th>Date Last Modified</th>
+                        <th>Hits</th>
+                        <th>Likes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- iterates through all blog posts -->
+                    <!-- displays blog posts whose status = 1 (i.e. published) -->
+                    <!-- serial variable prints serial number -->
+                    <%  var serial = 1
+                        for (let i = 0; i < blog_post.length; i++) { 
+                        if(blog_post[i].blog_status == 1){%>
+                        <tr>
+                            <td><%= serial %></td>
+                            <td><%= blog_post[i].blog_title %></td>
+                            <td><%= blog_post[i].blog_published %></td>
+                            <td><%= blog_post[i].blog_created %></td>
+                            <td><%= blog_post[i].blog_modified %></td>
+                            <td><%= blog_post[i].blog_hits %></td>
+                            <td><%= blog_post[i].blog_likes %></td>
+                            <!-- call-to-action buttons for articles -->
+                            <td>
+                                <form action="../article/article_clicked" method="post">
+                                    <!-- PREVIEW button: lets author see how the article looks like for a reader -->
+                                    <button name="id" value="<%= blog_post[i].id %>" >PREVIEW</button>
+                                </form>
+                                <form action="editing" method="post">
+                                    <!-- EDIT button -->
+                                    <button name="edit" value="<%= blog_post[i].id %>" >EDIT</button>
+                                </form>
+
+                                <form action="publish_actions" method="post">
+                                    <!-- ARCHIVE button: shifts article back to drafts' table -->
+                                    <button name="archive" value="<%= blog_post[i].id %>">ARCHIVE</button>
+                                    <br>
+                                    <!-- DELETE button: removes the article from the database -->
+                                    <button name="delete" value="<%= blog_post[i].id %>" class="delete-button">DELETE</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% serial++} } %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

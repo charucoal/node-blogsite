@@ -1,0 +1,75 @@
+<!-- ARTICLE TEMPLATE FILE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= blogpost[0].blog_title %></title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" type="text/css" href="/article_template.css">
+</head>
+
+<body>
+    <!-- blogpage details -->
+    <header>
+        <h6>CURRENTLY READING: the <i><%= blogpost[0].blog_title %></i> article | HITS: <%= blogpost[0].blog_hits %></h6>
+        <h1><a href="../reader/homepage"><%= set[0].blog_name %></a></h1>
+        <h3><%= set[0].blog_author %></h3>
+    </header>
+
+    <main>
+        <a href="../reader/homepage" id="go-back">← BACK to READER'S HOMEPAGE</a>
+
+        <!-- blog article details -->
+        <div class="article-head">
+            <h2>• <%= blogpost[0].blog_title %> •</h2>
+            <h4>Published on: <%= blogpost[0].blog_published %></h4>
+            <p id="article-content"><%= blogpost[0].blog_content %></p>
+        </div>
+
+        <div class="user-interaction">
+
+            <!-- like section -->
+            <div class="user-interaction-indiv">
+                <p>LIKED THE ARTICLE? GIVE IT A LIKE!</p>
+                <form action="article_interaction" method="post">
+                    <button id="like-button" name="like" value="<%= blogpost[0].id %>">LIKE!</button>
+                </form>
+                <p><%= blogpost[0].blog_likes %></p>
+            </div>
+    
+            <!-- comment input section -->
+            <div class="user-interaction-indiv">
+                <p>A PENNY FOR YOUR THOUGHTS?</p>
+                <form action="article_interaction" method="post">
+
+                    <label for="userInput">Username: </label>
+                    <input type="text" name="username" required>
+
+                    <label for="userInput">Your Comment: </label>
+                    <input type="text" name="userInput" required><br>
+                    
+                    <button id="comment-button" name="selectedArticle" value="<%= blogpost[0].id %>">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- diplay comments in a table -->
+        <h2 id = "comments-header">COMMENTS (<%= comments_list.length %>)</h2>
+        <table>
+            <!-- iterates and displays all the comments (newest at the top)  -->
+            <% for (let i = 0; i < comments_list.length; i++) { %>
+                <tr>
+                    <td>
+                    <!-- each comment is displayed in a new row -->
+                    <!-- comment is displayed in the format: USER on DATE, TIME commented COMMENT -->
+                        <p><b><%= comments_list[i].comment_user %></b> on <%= comments_list[i].comment_date_time %> commented <i><%= comments_list[i].comment_content %></i></p>
+                    <td>
+                </tr>
+            <% } %>
+        </table>
+    </main>
+</body>
+</html>

@@ -1,0 +1,155 @@
+/* WEBSITE'S MAIN FONT (regular version) */
+@font-face {
+    font-family: Didot-Regular;
+    src: url(fonts/Didot-Regular.ttf);
+}
+  
+/* WEBSITE'S MAIN FONT (bolded version) */
+@font-face {
+    font-family: Didot-Bold;
+    src: url(fonts/Didot-Bold.ttf);
+}
+
+body {
+    background-color: #f0efeb;
+    font-family: Didot-Bold;
+    text-align: center;
+}
+
+a {
+    color: #000; /* Black */
+    text-decoration: none;
+    background: linear-gradient(0deg, #000, #000) no-repeat right bottom / 0 var(--bg-h);
+    transition: background-size 500ms;
+    --bg-h: 1px;
+}
+
+/* underline effect is triggered on hover */
+a:where(:hover, :focus-visible) {
+    background-size: 100% var(--bg-h);
+    background-position-x: left;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+h2 {
+    border-top: 2px solid #000; /* Adjust the width and color as needed */
+    border-bottom: 2px solid #000; /* Adjust the width and color as needed */
+    padding: 10px; /* Optional: Add padding for better visual appearance */
+}
+
+h3 {
+    position: relative;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom:3%;
+}
+
+/* draws a line to the left and right of the author's name */
+h3::before,
+h3::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background-color: #000; /* Black */
+    width: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+h3::before {
+    left: 0;
+}
+
+h3::after {
+    right: 0;
+}
+
+button {
+    font-family: Didot-Bold;
+    width: fit-content;
+    outline: none;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #f0efeb;
+    border: 2px solid #000; /* Black */
+    margin-top: 2%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #e4e4e2; /* Light Gray */
+}
+
+table {
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    table-layout: fixed;
+    border-spacing: 30px;
+}
+
+/* each blog post takes 1/3 of the total width */
+td {
+    width: 33%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* height of each row */
+tr {
+    height: 250px;
+}
+
+/* preview blog text is initally hidden */
+.hidden-text-even,
+.hidden-text-odd{
+    display: none;
+}
+
+/* blog posts which are of even index */
+/* have white background, black text */
+.even{
+    background-color: #fff;
+    color:#000;
+}
+
+.even button{
+    background-color: white;
+    color: black;
+}
+
+/* on hover, button has a grey background  */
+.even button:hover{
+    background-color: rgb(215, 215, 215);;
+}
+
+/* on hover, the preview text is revealed */
+.even:hover .hidden-text-even{
+    display:block;
+}
+
+/* blog posts which are of odd index */
+/* have black background, white text */
+.odd{
+    background-color: #000;
+    color: #fff;
+}
+
+.odd button{
+    color: white;
+    background-color: black;
+    border-color: white;
+}
+
+/* on hover, button has a grey background  */
+.odd button:hover{
+    background-color: rgba(215, 215, 215, 0.427);;
+}
+
+/* on hover, the preview text is revealed */
+.odd:hover .hidden-text-odd{
+    color: white;
+    display:block;
+}
